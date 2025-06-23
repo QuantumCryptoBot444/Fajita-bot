@@ -1,0 +1,29 @@
+// Check bot status
+fetch("/api/status")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("status").textContent = data.status || "Online";
+  })
+  .catch(() => {
+    document.getElementById("status").textContent = "Offline";
+  });
+
+// Fetch latest trades
+fetch("/api/trades/latest")
+  .then(res => res.json())
+  .then(trades => {
+    const container = document.getElementById("trade-log");
+    container.innerHTML = ""; // Clear existing content
+    if (!Array.isArray(trades) || trades.length === 0) {
+      container.textContent = "No trades yet.";
+      return;
+    }
+    trades.forEach(trade => {
+      const line = document.createElement("div");
+      line.textContent = `[${trade.time}] ${trade.type.toUpperCase()} ${trade.coin} @ $${trade.price} | Profit: ${trade.profit}%`;
+      container.appendChild(line);
+    });
+  })
+  .catch(() => {
+    document.getElementById("trade-log").textContent = "Error loading trades.";
+  });
