@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Fajita Bot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fajita Bot - Live AI Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Fajita Bot 🤖🔥</h1>
-  <p>Status: <span id="status">Connecting...</span></p>
+  <div class="container">
+    <h1>🌶️ Fajita Bot Dashboard</h1>
+    <div id="status" class="card">📡 Status: <span>Analyzing...</span></div>
+    <div id="trade" class="card">⏳ Waiting for signal...</div>
+    <div class="vegeta-container">
+      <img id="vegeta" src="vegeta.gif" alt="Vegeta" />
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
